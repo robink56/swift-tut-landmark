@@ -8,16 +8,7 @@ struct LandmarkDetail: View {
             MapView(coordinate: landmark.locationCoordinate)
                 .frame(height: 300)
 
-            landmark.image
-                .resizable()
-                .frame(width: 200, height: 200)
-                .clipShape(Circle())
-                .overlay {
-                    Circle().stroke(.white, lineWidth: 4)
-                }
-                .shadow(radius: 7)
-                .offset(y: -130)
-                .padding(.bottom, -130)
+            CircleImage(image: landmark.image)
 
             VStack(alignment: .leading) {
                 Text(landmark.name)
@@ -35,6 +26,9 @@ struct LandmarkDetail: View {
 
                 Text("About \(landmark.name)")
                     .font(.title2)
+
+                Divider()
+
                 Text(landmark.description)
             }
             .padding()
@@ -45,5 +39,7 @@ struct LandmarkDetail: View {
 }
 
 #Preview {
-    LandmarkDetail(landmark: ModelData().landmarks[0])
+    LandmarkDetail(
+        landmark: ModelData().landmarks[1]
+    )
 }

@@ -1,23 +1,21 @@
-//
-//  CircleImage.swift
-//  Landmarks
-//
-//  Created by rkhatri on 11.06.26.
-//
-
 import SwiftUI
 
 struct CircleImage: View {
+    var image: Image
+
     var body: some View {
-        Image("turtlerock")
-            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+        image
+            .clipShape(Circle())
             .overlay {
-                Circle().stroke(.white, lineWidth: 4)
+                Circle()
+                    .stroke(.white, lineWidth: 4)
             }
             .shadow(radius: 7)
+            .offset(y: -120)
+            .padding(.bottom, -130)
     }
 }
 
 #Preview {
-    CircleImage()
+    CircleImage(image: Image("turtlerock"))
 }

@@ -9,11 +9,12 @@ import SwiftUI
 
 struct LandmarkList: View {
     @Environment(ModelData.self) var modelData
-
+    
     var body: some View {
         List {
-            LandmarkRow(landmark: modelData.landmarks[0])
-            LandmarkRow(landmark: modelData.landmarks[1])
+            ForEach(modelData.landmarks) { landmark in
+                LandmarkRow(landmark: landmark)
+            }
         }
     }
 }
@@ -22,3 +23,5 @@ struct LandmarkList: View {
     LandmarkList()
         .environment(ModelData())
 }
+
+
