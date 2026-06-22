@@ -1,9 +1,14 @@
 import Foundation
 
 
+import Foundation
+
+
 @Observable
 class ModelData {
     var landmarks: [Landmark] = load("landmarkData.json")
+   
+    var profile = Profile.default
 
 
     var features: [Landmark] {
