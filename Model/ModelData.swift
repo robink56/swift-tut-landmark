@@ -1,17 +1,22 @@
-//
-//  Data.swift
-//  Landmarks
-//
-//  Created by rkhatri on 11.06.26.
-//
-
 import Foundation
 
 
 @Observable
 class ModelData {
     var landmarks: [Landmark] = load("landmarkData.json")
-    var hikes: [Hike] = load("hikeData.json")
+
+
+    var features: [Landmark] {
+        landmarks.filter { $0.isFeatured }
+    }
+
+
+    var categories: [String: [Landmark]] {
+        Dictionary(
+            grouping: landmarks,
+            by: { $0.category.rawValue }
+        )
+    }
 }
 
 

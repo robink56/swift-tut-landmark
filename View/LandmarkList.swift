@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct LandmarkList: View {
+    @Environment(ModelData.self) var modelData
+
     var body: some View {
         List {
-            LandmarkRow(landmark: landmarks[0])
-            LandmarkRow(landmark: landmarks[1])
+            LandmarkRow(landmark: modelData.landmarks[0])
+            LandmarkRow(landmark: modelData.landmarks[1])
         }
     }
 }
 
 #Preview {
     LandmarkList()
+        .environment(ModelData())
 }
